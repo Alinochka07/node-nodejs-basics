@@ -39,13 +39,5 @@
   "bugs": {
     "url": "https://github.com/AlreadyBored/node-nodejs-basics/issues"
   },
-  "homepage": "https://github.com/AlreadyBored/node-nodejs-basics#readme",
-  "dependencies": {
-    "fs": "^0.0.1-security",
-    "fs-extra": "^11.2.0",
-    "path": "^0.12.7"
-  },
-  "devDependencies": {
-    "@types/fs-extra": "^11.0.4"
-  }
+  "homepage": "https://github.com/AlreadyBored/node-nodejs-basics#readme"
 }

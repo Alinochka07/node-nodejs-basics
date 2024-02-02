@@ -1,4 +1,4 @@
-import fs from 'fs-extra';
+import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -11,7 +11,7 @@ const list = async () => {
     const folderPath = path.join(__dirname, 'files');
     const filesPath = fs.readdirSync(folderPath);
     
-    if (!fs.pathExists(folderPath)) {
+    if (!fs.existsSync(folderPath)) {
         console.error('FS operation failed');
     } else {
         filesPath.map(file => {

@@ -34,10 +34,11 @@ const performCalculations = async () => {
                 completedWorkers++;
                 if (completedWorkers === workers.length) {
                     console.log('Results:', results);
+                    workers.forEach(worker => worker.terminate());
                 }
             });
 
-            worker.on('error', (error) => {
+            worker.on('error', () => {
                 results[index] = { status: 'error', data: null };
                 completedWorkers++;
                 if (completedWorkers === workers.length) {

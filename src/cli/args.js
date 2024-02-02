@@ -17,8 +17,3 @@ const parseArgs = (args) => {
 const args = process.argv.slice(2);
 
 parseArgs(args);
-
-// when running: node src/cli/args.js --arg1 value1 --arg2 value2
-//outputs: 
-// arg1 is value1
-// arg2 is value2

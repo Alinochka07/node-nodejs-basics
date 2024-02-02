@@ -6,6 +6,7 @@ import { fileURLToPath } from 'url';
 const write = async () => {
     const __dirname = path.dirname(fileURLToPath(import.meta.url));
     const filePath = path.join(__dirname, 'files', 'fileToWrite.txt');
+    console.log('Enter any text to write it in txt file. Then check in fileToWrite.txt. To quit, press Ctrl+C')
     
     const writeStream = createWriteStream(filePath);
 

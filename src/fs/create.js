@@ -7,15 +7,15 @@ const __dirname = path.dirname(__fileName);
 
 const create = async () => {
     const folderPath = path.join(__dirname, '.', 'files');
-    const filePath = path.join(folderPath, 'fileToCreate.txt');
+    const filePath = path.join(folderPath, 'fresh.txt');
     const content = "I am fresh and young";
 
     if(!fs.existsSync(folderPath)) {
         console.error('Folder doesnt exist');
     }
 
-    if(fs.existsSync(filePath)) {
-        console.error('FS operation failed, file already exists');
+    if(fs.existsSync(filePath) || !fs.existsSync(folderPath)) {
+        console.error('FS operation failed');
         return;
     }
     fs.writeFileSync(filePath, content);

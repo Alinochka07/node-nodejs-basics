@@ -1,4 +1,4 @@
-import fs from 'fs-extra';
+import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -9,7 +9,7 @@ const read = async () => {
     const filePath = path.join(__dirname, 'files', 'fileToRead.txt');
    
     try {
-        const content = await fs.promises.readFile(filePath, 'utf-8');
+        const content = fs.readFileSync(filePath, 'utf-8');
             if(!fs.existsSync(filePath)) {
                 console.log('FS operation failed');
             } else {

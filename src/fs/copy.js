@@ -1,4 +1,4 @@
-import fs from 'fs-extra';
+import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -9,17 +9,17 @@ const copy = async (sourceFolder, copyFolder) => {
     const sourcePath = path.join(__dirname, sourceFolder);
     const copyPath = path.join(__dirname, copyFolder);
 
-    if(!await fs.pathExists(sourcePath) || await fs.pathExists(copyPath)) {
-        console.error('FS operation failed');
-        return;
-    }
-
     try {
-        await fs.copy(sourcePath, copyPath);
-        console.log('The folder has successfully been copied');
-
+        await fs.promises.access(sourcePath, fs.constants.F_OK);
+        await fs.promises.access(copyPath, fs.constants.F_OK).catch(() => fs.promises.mkdir(copyPath));
+        
+        const files = await fs.promises.readdir(sourcePath);
+        for (const file of files) {
+            await fs.promises.copyFile(path.join(sourcePath, file), path.join(copyPath, file));
+        }
+        console.log('The folder has been successfully copied');
     } catch (error) {
-        console.error('Error in copying folder', error)
+        console.error('FS operation failed');
     }
 };
 
